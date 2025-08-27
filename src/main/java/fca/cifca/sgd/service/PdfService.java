@@ -8,28 +8,30 @@ import org.thymeleaf.spring6.SpringTemplateEngine;
 import java.io.ByteArrayOutputStream;
 
 @Service
-public class DocumentoService {
+public class PdfService {
 
     private final SpringTemplateEngine templateEngine;
 
-    public DocumentoService(SpringTemplateEngine templateEngine) {
+    public PdfService(SpringTemplateEngine templateEngine) {
         this.templateEngine = templateEngine;
     }
 
-    public byte[] renderOrderHtmlToPdf(Object model) {
-
-        Context ctx = new Context();
-        ctx.setVariable("obtener", model);
-        String html = templateEngine.process("obtener", ctx);
-
+    public byte[] renderHtmlToPdf(String template, Object data) {
         try (ByteArrayOutputStream baos = new ByteArrayOutputStream()) {
+            Context ctx = new Context();
+            ctx.setVariable("documento", data);
+
+            String html = templateEngine.process(template, ctx);
+
             PdfRendererBuilder builder = new PdfRendererBuilder();
+
             builder.withHtmlContent(html, null);
             builder.toStream(baos);
             builder.run();
+
             return baos.toByteArray();
         } catch (Exception e) {
-            throw new RuntimeException("Ocurrió un error al generar el PDF", e);
+            throw new RuntimeException("Ha ocurrido un error al generar el PDF", e);
         }
     }
 }
