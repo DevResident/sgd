@@ -14,8 +14,6 @@ import lombok.NoArgsConstructor;
 public class TitulacionDTO {
 
     @NotBlank
-    private String idDocumento;
-    @NotBlank
     private String numeroCuenta;
     @NotBlank
     private String nombre;
