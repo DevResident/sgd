@@ -1,6 +1,7 @@
 package fca.cifca.sgd.service;
 
 import com.openhtmltopdf.pdfboxout.PdfRendererBuilder;
+import org.springframework.core.io.ClassPathResource;
 import org.springframework.stereotype.Service;
 import org.thymeleaf.context.Context;
 import org.thymeleaf.spring6.SpringTemplateEngine;
@@ -22,6 +23,8 @@ public class PdfService {
             ctx.setVariable("documento", data);
 
             String html = templateEngine.process(template, ctx);
+
+            String baseUrl = new ClassPathResource("static/").getURL().toExternalForm();
 
             PdfRendererBuilder builder = new PdfRendererBuilder();
 

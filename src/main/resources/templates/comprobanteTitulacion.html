@@ -1,72 +1,74 @@
 <!DOCTYPE html>
-<html xmlns:th="http://www.thymeleaf.org" lang="es">
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org" lang="es">
 <head>
     <meta charset="UTF-8"/>
     <title>Comprobante de Inscripción — Opción de Titulación</title>
-    <link rel="stylesheet" th:href="@{/css/documento.css}">
-    <link rel="stylesheet" th:href="@{/css/titulacion.css}">
+    <link rel="stylesheet" href="css/documento.css"/>
+    <link rel="stylesheet" href="css/titulacion.css"/>
 </head>
 <body>
 
 <header class="doc-header">
     <div class="doc-header__logo doc-header__logo--left">
-        <img th:src="@{/img/unam_logo.png}" alt="Escudo UNAM">
+        <img src="images/unam.png" alt="Escudo UNAM" width="100" height="100"/>
     </div>
 
     <div class="doc-header__titles">
-        <p class="doc-header__line doc-header__line--uni">UNIVERSIDAD NACIONAL AUT&Oacute;NOMA DE M&Eacute;XICO</p>
-        <p class="doc-header__line">FACULTAD DE CONTADUR&Iacute;A Y ADMINISTRACI&Oacute;N</p>
-        <p class="doc-header__line">SECRETAR&Iacute;A GENERAL</p>
-        <p class="doc-header__line doc-header__line--strong">EX&Aacute;MENES PROFESIONALES</p>
-        <p class="doc-header__line doc-header__line--strong">REGISTRO EN L&Iacute;NEA</p>
+        <p class="doc-header__line doc-header__line--uni">UNIVERSIDAD NACIONAL AUTÓNOMA DE MÉXICO</p>
+        <p class="doc-header__line">FACULTAD DE CONTADURÍA Y ADMINISTRACIÓN</p>
+        <p class="doc-header__line">SECRETARÍA GENERAL</p>
+        <p class="doc-header__line doc-header__line--strong">EXÁMENES PROFESIONALES</p>
+        <p class="doc-header__line doc-header__line--strong">REGISTRO EN LÍNEA</p>
     </div>
 
     <div class="doc-header__logo doc-header__logo--right">
-        <img th:src="@{/img/fca_logo.png}" alt="Logo FCA">
+        <img src="images/yaca.png" alt="Logotipo YACA" width="100" height="100"/>
     </div>
 </header>
 
 <hr class="doc-separator"/>
 
 <table class="tit-table">
+    <tbody>
     <tr>
-        <th>N&uacute;mero de Cuenta:</th>
-        <td th:text="${reg.numeroCuenta}"></td>
+        <th>Número de Cuenta:</th>
+        <td th:text="${documento.numeroCuenta}">__</td>
     </tr>
     <tr>
         <th>Nombre del Alumno:</th>
-        <td th:text="${reg.nombre}"></td>
-        <td th:text="${reg.primerApellido}"></td>
-        <td th:text="${reg.segundoApellido}"></td>
+        <td th:text="${documento.nombre}">__</td>
+        <td th:text="${documento.primerApellido}">__</td>
+        <td th:text="${documento.segundoApellido}">__</td>
     </tr>
     <tr>
         <th>Universidad:</th>
-        <td th:text="${reg.universidadProcedencia}"></td>
+        <td th:text="${documento.universidadProcedencia}">__</td>
     </tr>
     <tr>
         <th>Plantel:</th>
-        <td th:text="${reg.plantelProcedencia}"></td>
+        <td th:text="${documento.plantelProcedencia}">__</td>
     </tr>
     <tr>
         <th>Licenciatura:</th>
-        <td th:text="${reg.licenciatura}"></td>
+        <td th:text="${documento.licenciatura}">__</td>
     </tr>
     <tr>
-        <th>Opci&oacute;n de Titulaci&oacute;n:</th>
-        <td th:text="${reg.opcionTitulacion}"></td>
+        <th>Opción de Titulación:</th>
+        <td th:text="${documento.opcionTitulacion}">__</td>
     </tr>
     <tr>
         <th>Modalidad:</th>
-        <td th:text="${reg.modalidad}"></td>
+        <td th:text="${documento.modalidad}">__</td>
     </tr>
     <tr>
-        <th>Fecha de aplicaci&oacute;n:</th>
-        <td th:text="${reg.fechaAplicacion}"></td>
+        <th>Fecha de aplicación:</th>
+        <td th:text="${#temporals.format(documento.fechaAplicacion, 'dd/MM/yyyy')}">__</td>
     </tr>
     <tr>
         <th>Fecha de registro:</th>
-        <td th:text="${reg.fechaRegistro}"></td>
+        <td th:text="${#temporals.format(documento.fechaRegistro, 'dd/MM/yyyy')}">__</td>
     </tr>
+    </tbody>
 </table>
 
 </body>

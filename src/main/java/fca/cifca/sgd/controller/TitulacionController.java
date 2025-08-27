@@ -23,7 +23,7 @@ public class TitulacionController {
     )
 
     public ResponseEntity<byte[]> generarComprobante(@Valid @RequestBody TitulacionDTO dto) {
-
+        System.out.println("DTO recibido: " + dto);
         byte[] pdf = pdfService.renderHtmlToPdf("comprobanteTitulacion", dto);
 
         HttpHeaders headers = new HttpHeaders();
