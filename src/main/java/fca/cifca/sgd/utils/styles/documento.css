@@ -1,0 +1,39 @@
+:root {
+    --text:#111;
+    --muted:#555;
+    --line:#cfcfcf;
+    --thead:#f2f2f2;
+}
+
+@page { size: A4; margin: 18mm; }
+* { box-sizing: border-box; }
+html, body { background:#fff; }
+body { font-family: Arial, Helvetica, sans-serif; font-size:12px; color:var(--text); line-height:1.35; margin:0; padding:0 18mm; }
+
+.doc-header {
+    display:grid;
+    grid-template-columns: 96px 1fr 96px;
+    align-items:center;
+    gap:8px;
+    padding-top:8px;
+}
+
+.doc-header__logo { display:flex; justify-content:center; }
+.doc-header__logo img { width:96px; height:auto; object-fit:contain; }
+
+.doc-header__titles { text-align:center; }
+.doc-header__line { margin:2px 0; font-size:12px; color:var(--text); }
+.doc-header__line--uni { letter-spacing:.2px; }
+.doc-header__line--strong { font-weight:700; }
+
+.doc-separator {
+    height:1px; border:0; background:var(--line);
+    margin:10px 0 14px;
+}
+
+@media (max-width:600px) {
+    body { padding:12px; }
+    .doc-header { grid-template-columns:64px 1fr 64px; }
+    .doc-header__logo img { width:64px; }
+    .doc-header__line { font-size:11px; }
+}

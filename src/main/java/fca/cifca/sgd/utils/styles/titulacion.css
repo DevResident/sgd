@@ -1,0 +1,32 @@
+.tit-table {
+    width:100%;
+    border-collapse:collapse;
+    margin-top:6px;
+}
+
+.tit-table th,
+.tit-table td {
+    border:1px solid var(--line);
+    padding:6px 8px;
+    vertical-align:top;
+    text-align:left;
+}
+
+.tit-table th {
+    background:var(--thead);
+    font-weight:700;
+    width:32%;
+    white-space:nowrap;
+}
+
+.tit-table tr:nth-child(even) td {
+    background:#fafafa; /* zebra suave */
+}
+
+.tit-table tr:nth-child(2) td:not(:first-child) {
+    width:auto;
+}
+
+@media print {
+    .tit-table tr:nth-child(even) td { background:transparent; }
+}
