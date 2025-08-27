@@ -19,7 +19,7 @@ public class TitulacionDTO {
     private String nombre;
     @NotBlank
     private String primerApellido;
-    @NotBlank
+
     private String segundoApellido;
     @NotBlank
     private String universidadProcedencia;
