@@ -1,16 +1,16 @@
 <!DOCTYPE html>
-<html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org" lang="es">
+<html xmlns:th="http://www.thymeleaf.org" lang="es">
 <head>
     <meta charset="UTF-8"/>
     <title>Comprobante de Inscripción — Opción de Titulación</title>
-    <link rel="stylesheet" href="../static/css/encabezado.css"/>
-    <link rel="stylesheet" href="../static/css/titulacion.css"/>
+    <link th:href="@{../static/styles/cssandjs/header.css.css}"/>
+    <link th:href="@{../static/styles/cssandjs/titulacion.css}"/>
 </head>
 <body>
 
 <header class="doc-header">
     <div class="doc-header__logo doc-header__logo--left">
-        <img src="../static/img/unam.png" alt="Escudo UNAM"/>
+        <img th:src="@{../static/styles/img/unam.png}"/>
     </div>
 
     <div class="doc-header__titles">
@@ -22,7 +22,7 @@
     </div>
 
     <div class="doc-header__logo doc-header__logo--right">
-        <img src="../static/img/yaca.png" alt="Logotipo YACA"/>
+        <img th:src="@{../static/styles/img/yaca.png}"/>
     </div>
 </header>
 
