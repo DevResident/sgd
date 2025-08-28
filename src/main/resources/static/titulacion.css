@@ -6,14 +6,14 @@
 
 .tit-table th,
 .tit-table td {
-    border:1px solid var(--line);
+    border:1px solid #cfcfcf;
     padding:6px 8px;
     vertical-align:top;
     text-align:left;
 }
 
 .tit-table th {
-    background:var(--thead);
+    background:#f2f2f2;
     font-weight:700;
     width:32%;
     white-space:nowrap;
@@ -23,10 +23,7 @@
     background:#fafafa;
 }
 
-.tit-table tr:nth-child(2) td:not(:first-child) {
-    width:auto;
-}
-
+/* En print se suele preferir sin bandas */
 @media print {
     .tit-table tr:nth-child(even) td { background:transparent; }
 }

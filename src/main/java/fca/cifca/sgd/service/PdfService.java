@@ -28,7 +28,7 @@ public class PdfService {
 
             PdfRendererBuilder builder = new PdfRendererBuilder();
 
-            builder.withHtmlContent(html, null);
+            builder.withHtmlContent(html, baseUrl);
             builder.toStream(baos);
             builder.run();
 
