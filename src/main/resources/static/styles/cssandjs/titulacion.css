@@ -20,7 +20,7 @@
 }
 
 .tit-table tr:nth-child(even) td {
-    background:#fafafa; /* zebra suave */
+    background:#fafafa;
 }
 
 .tit-table tr:nth-child(2) td:not(:first-child) {
