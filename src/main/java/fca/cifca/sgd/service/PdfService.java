@@ -1,14 +1,16 @@
 package fca.cifca.sgd.service;
 
 import com.openhtmltopdf.pdfboxout.PdfRendererBuilder;
-import org.springframework.core.io.ClassPathResource;
-import org.springframework.stereotype.Service;
 import org.thymeleaf.context.Context;
 import org.thymeleaf.spring6.SpringTemplateEngine;
 
+import org.springframework.core.io.ClassPathResource;
+import org.springframework.stereotype.Service;
+import lombok.extern.slf4j.Slf4j;
 import java.io.ByteArrayOutputStream;
 import java.util.Locale;
 
+@Slf4j
 @Service
 public class PdfService {
 
@@ -34,10 +36,12 @@ public class PdfService {
             builder.withHtmlContent(html, baseUrl);
             builder.toStream(baos);
             builder.run();
+            log.info("PDF generado exitosamente"+ data);
 
             return baos.toByteArray();
         } catch (Exception e) {
-            throw new RuntimeException("Ha ocurrido un error al generar el PDF", e);
+            log.error("Ha ocurrido un error al generar el PDF", e);
+            return null;
         }
     }
 }

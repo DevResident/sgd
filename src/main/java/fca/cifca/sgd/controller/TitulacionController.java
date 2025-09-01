@@ -1,11 +1,13 @@
 package fca.cifca.sgd.controller;
 
+import lombok.extern.slf4j.Slf4j;
 import fca.cifca.sgd.model.dto.TitulacionDTO;
 import fca.cifca.sgd.service.PdfService;
 import jakarta.validation.Valid;
 import org.springframework.http.*;
 import org.springframework.web.bind.annotation.*;
 
+@Slf4j
 @RestController
 @RequestMapping("/titulacion")
 public class TitulacionController {
@@ -23,8 +25,10 @@ public class TitulacionController {
     )
 
     public ResponseEntity<byte[]> generarComprobante(@Valid @RequestBody TitulacionDTO dto) {
-        System.out.println("DTO recibido: " + dto);
+        log.info("DTO recibido: {}", dto);
+
         byte[] pdf = pdfService.renderHtmlToPdf("comprobanteTitulacion", dto);
+        log.info("PDF generado exitosamente para la cuenta {}", dto.getNumeroCuenta());
 
         HttpHeaders headers = new HttpHeaders();
         headers.setContentType(MediaType.APPLICATION_PDF);
