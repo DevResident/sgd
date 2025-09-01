@@ -3,8 +3,8 @@
 <head>
     <meta charset="UTF-8"/>
     <title>Comprobante de Inscripción — Opción de Titulación</title>
-    <link href="../static/header.css" rel="stylesheet" type="text/css"/>
-    <link href="../static/titulacion.css" rel="stylesheet" type="text/css"/>
+    <link href="header.css" rel="stylesheet" type="text/css"/>
+    <link href="titulacion.css" rel="stylesheet" type="text/css"/>
 </head>
 <body>
 
@@ -61,12 +61,12 @@
         <td th:text="${documento.modalidad}">__</td>
     </tr>
     <tr>
-        <th>Fecha de aplicación:</th>
-        <td th:text="${#temporals.format(documento.fechaAplicacion, 'dd/MM/yyyy')}">__</td>
+        <th>Fecha de registro:</th>
+        <td th:text="${#temporals.format(documento.fechaRegistro, 'dd/MMMM/yyyy')}">__</td>
     </tr>
     <tr>
-        <th>Fecha de registro:</th>
-        <td th:text="${#temporals.format(documento.fechaRegistro, 'dd/MM/yyyy')}">__</td>
+        <th>Fecha de aplicación:</th>
+        <td th:text="${#temporals.format(documento.fechaAplicacion, 'dd/MMMM/yyyy')}">__</td>
     </tr>
     </tbody>
 </table>

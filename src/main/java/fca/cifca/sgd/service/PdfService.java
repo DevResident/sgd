@@ -7,6 +7,7 @@ import org.thymeleaf.context.Context;
 import org.thymeleaf.spring6.SpringTemplateEngine;
 
 import java.io.ByteArrayOutputStream;
+import java.util.Locale;
 
 @Service
 public class PdfService {
@@ -19,7 +20,9 @@ public class PdfService {
 
     public byte[] renderHtmlToPdf(String template, Object data) {
         try (ByteArrayOutputStream baos = new ByteArrayOutputStream()) {
-            Context ctx = new Context();
+
+            Locale mx = Locale.forLanguageTag("es-MX");
+            Context ctx = new Context(mx);
             ctx.setVariable("documento", data);
 
             String html = templateEngine.process(template, ctx);
