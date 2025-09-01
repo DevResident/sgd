@@ -31,7 +31,7 @@ public class TitulacionController {
         headers.setContentDisposition(
                 ContentDisposition
                         .inline()
-                        .filename("Comprobante-" + dto.getNumeroCuenta() + ".pdf")
+                        .filename(dto.getNumeroCuenta() + "-comprobante-titulacion" + ".pdf")
                         .build()
         );
 
