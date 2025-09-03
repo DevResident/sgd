@@ -24,7 +24,14 @@ public class TitulacionController {
             produces = MediaType.APPLICATION_PDF_VALUE
     )
 
-    public ResponseEntity<byte[]> generarComprobante(@Valid @RequestBody TitulacionDTO dto) {
+    public ResponseEntity<byte[]> generarComprobante(@Valid @RequestBody TitulacionDTO dto){
+        if (dto == null) {
+            throw new IllegalArgumentException("El DTO no puede ser null");
+        }
+        if (isEmpty(dto)) {
+            throw new IllegalArgumentException("El DTO no puede estar vacío");
+        }
+
         log.info("DTO recibido: {}", dto);
 
         byte[] pdf = pdfService.renderHtmlToPdf("comprobanteTitulacion", dto);
@@ -33,12 +40,27 @@ public class TitulacionController {
         HttpHeaders headers = new HttpHeaders();
         headers.setContentType(MediaType.APPLICATION_PDF);
         headers.setContentDisposition(
-                ContentDisposition
-                        .inline()
+                ContentDisposition.inline()
                         .filename(dto.getNumeroCuenta() + "-comprobante-titulacion" + ".pdf")
                         .build()
         );
 
         return ResponseEntity.ok().headers(headers).body(pdf);
     }
+
+    private boolean isEmpty(TitulacionDTO dto) {
+        return isBlank(dto.getNumeroCuenta())
+                && isBlank(dto.getNombre())
+                && isBlank(dto.getPrimerApellido())
+                && isBlank(dto.getSegundoApellido())
+                && isBlank(dto.getUniversidadProcedencia())
+                && isBlank(dto.getPlantelProcedencia())
+                && isBlank(dto.getLicenciatura())
+                && isBlank(dto.getOpcionTitulacion())
+                && isBlank(dto.getModalidad())
+                && dto.getFechaRegistro() == null
+                && dto.getFechaAplicacion() == null;
+    }
+
+    private boolean isBlank(String s) { return s == null || s.isBlank(); }
 }

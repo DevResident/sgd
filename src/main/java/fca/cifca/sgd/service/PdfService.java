@@ -39,9 +39,10 @@ public class PdfService {
             log.info("PDF generado exitosamente"+ data);
 
             return baos.toByteArray();
+
         } catch (Exception e) {
             log.error("Ha ocurrido un error al generar el PDF", e);
-            return null;
+            throw new IllegalArgumentException(e);
         }
     }
 }
