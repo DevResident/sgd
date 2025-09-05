@@ -33,7 +33,6 @@ public class TitulacionControllerTest {
     public void titulacionControllerTestPartial() {
         TitulacionDTO dto = new TitulacionDTO();
         dto.setNumeroCuenta("123456789");
-        assertThrows(ConstraintViolationException.class,
-                () -> titulacionController.generarComprobante(dto));
+        assertThrows(ConstraintViolationException.class, () -> titulacionController.generarComprobante(dto));
     }
 }

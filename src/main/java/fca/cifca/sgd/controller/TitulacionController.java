@@ -28,6 +28,7 @@ public class TitulacionController {
     )
 
     public ResponseEntity<byte[]> generarComprobante(@NotNull @Valid @RequestBody TitulacionDTO dto){
+
          try{
             log.info("Los datos del DTO fueron recibidos: {}", dto);
 
@@ -49,5 +50,7 @@ public class TitulacionController {
             log.error("Error al generar comprobante titulacion", e);
             throw new RuntimeException("Ocurrió un error al generar el comprobante titulacion", e);
         }
+
     }
+
 }
