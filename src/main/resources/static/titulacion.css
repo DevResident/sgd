@@ -1,0 +1,29 @@
+.tit-table {
+    width:100%;
+    border-collapse:collapse;
+    margin-top:6px;
+}
+
+.tit-table th,
+.tit-table td {
+    border:1px solid #cfcfcf;
+    padding:6px 8px;
+    vertical-align:top;
+    text-align:left;
+}
+
+.tit-table th {
+    background:#f2f2f2;
+    font-weight:700;
+    width:32%;
+    white-space:nowrap;
+}
+
+.tit-table tr:nth-child(even) td {
+    background:#fafafa;
+}
+
+/* En print se suele preferir sin bandas */
+@media print {
+    .tit-table tr:nth-child(even) td { background:transparent; }
+}
