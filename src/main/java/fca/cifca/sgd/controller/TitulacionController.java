@@ -6,8 +6,11 @@ import fca.cifca.sgd.service.PdfService;
 import jakarta.validation.Valid;
 import org.springframework.http.*;
 import org.springframework.web.bind.annotation.*;
+import org.springframework.validation.annotation.Validated;
+import jakarta.validation.constraints.NotNull;
 
 @Slf4j
+@Validated
 @RestController
 @RequestMapping("/titulacion")
 public class TitulacionController {
@@ -24,43 +27,27 @@ public class TitulacionController {
             produces = MediaType.APPLICATION_PDF_VALUE
     )
 
-    public ResponseEntity<byte[]> generarComprobante(@Valid @RequestBody TitulacionDTO dto){
-        if (dto == null) {
-            throw new IllegalArgumentException("El DTO no puede ser null");
+    public ResponseEntity<byte[]> generarComprobante(@NotNull @Valid @RequestBody TitulacionDTO dto){
+         try{
+            log.info("Los datos del DTO fueron recibidos: {}", dto);
+
+            byte[] pdf = pdfService.renderHtmlToPdf("comprobanteTitulacion", dto);
+
+            log.info("El PDF se generó exitosamente para el número de cuenta {}", dto.getNumeroCuenta());
+
+            HttpHeaders headers = new HttpHeaders();
+            headers.setContentType(MediaType.APPLICATION_PDF);
+            headers.setContentDisposition(
+                    ContentDisposition.inline()
+                            .filename(dto.getNumeroCuenta() + "-comprobante-titulacion" + ".pdf")
+                            .build()
+            );
+
+            return ResponseEntity.ok().headers(headers).body(pdf);
+
+        } catch (Exception e){
+            log.error("Error al generar comprobante titulacion", e);
+            throw new RuntimeException("Ocurrió un error al generar el comprobante titulacion", e);
         }
-        if (isEmpty(dto)) {
-            throw new IllegalArgumentException("El DTO no puede estar vacío");
-        }
-
-        log.info("DTO recibido: {}", dto);
-
-        byte[] pdf = pdfService.renderHtmlToPdf("comprobanteTitulacion", dto);
-        log.info("PDF generado exitosamente para la cuenta {}", dto.getNumeroCuenta());
-
-        HttpHeaders headers = new HttpHeaders();
-        headers.setContentType(MediaType.APPLICATION_PDF);
-        headers.setContentDisposition(
-                ContentDisposition.inline()
-                        .filename(dto.getNumeroCuenta() + "-comprobante-titulacion" + ".pdf")
-                        .build()
-        );
-
-        return ResponseEntity.ok().headers(headers).body(pdf);
     }
-
-    private boolean isEmpty(TitulacionDTO dto) {
-        return isBlank(dto.getNumeroCuenta())
-                && isBlank(dto.getNombre())
-                && isBlank(dto.getPrimerApellido())
-                && isBlank(dto.getSegundoApellido())
-                && isBlank(dto.getUniversidadProcedencia())
-                && isBlank(dto.getPlantelProcedencia())
-                && isBlank(dto.getLicenciatura())
-                && isBlank(dto.getOpcionTitulacion())
-                && isBlank(dto.getModalidad())
-                && dto.getFechaRegistro() == null
-                && dto.getFechaAplicacion() == null;
-    }
-
-    private boolean isBlank(String s) { return s == null || s.isBlank(); }
 }
