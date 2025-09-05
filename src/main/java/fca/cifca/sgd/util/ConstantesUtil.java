@@ -15,6 +15,11 @@ public final class ConstantesUtil {
 //Nombre
     public static final String UNAM = "UNIVERSIDAD NACIONAL AUTÓNOMA DE MÉXICO";
     public static final String FCA = "FACULTAD DE CONTADURÍA Y ADMINISTRACIÓN";
+
+    public static final String SECRETARÍAGENERAL = "SECRETARÍA GENERAL";
+
+    public static final String EXAMENESPROFESIONALES = "EXÁMENES PROFESIONALES";
+
     public static final String ONLINE = "REGISTRO EN LÍNEA";
 
 //Comprobantes
