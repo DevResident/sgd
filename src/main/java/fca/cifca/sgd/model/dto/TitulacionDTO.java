@@ -8,6 +8,9 @@ import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
+/**
+ * The type Titulacion dto.
+ */
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
@@ -19,7 +22,6 @@ public class TitulacionDTO {
     private String nombre;
     @NotBlank
     private String primerApellido;
-
     private String segundoApellido;
     @NotBlank
     private String universidadProcedencia;

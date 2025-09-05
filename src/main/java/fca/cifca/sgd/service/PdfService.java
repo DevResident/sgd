@@ -1,9 +1,10 @@
 package fca.cifca.sgd.service;
 
+import static fca.cifca.sgd.util.ConstantesUtil.*;
+
 import com.openhtmltopdf.pdfboxout.PdfRendererBuilder;
 import org.thymeleaf.context.Context;
 import org.thymeleaf.spring6.SpringTemplateEngine;
-
 import org.springframework.core.io.ClassPathResource;
 import org.springframework.stereotype.Service;
 import lombok.extern.slf4j.Slf4j;
@@ -23,13 +24,13 @@ public class PdfService {
     public byte[] renderHtmlToPdf(String template, Object data) {
         try (ByteArrayOutputStream baos = new ByteArrayOutputStream()) {
 
-            Locale mx = Locale.forLanguageTag("es-MX");
+            Locale mx = Locale.forLanguageTag(Mexico);
             Context ctx = new Context(mx);
-            ctx.setVariable("documento", data);
+            ctx.setVariable(Documento, data);
 
             String html = templateEngine.process(template, ctx);
 
-            String baseUrl = new ClassPathResource("static/").getURL().toExternalForm();
+            String baseUrl = new ClassPathResource(Static).getURL().toExternalForm();
 
             PdfRendererBuilder builder = new PdfRendererBuilder();
 

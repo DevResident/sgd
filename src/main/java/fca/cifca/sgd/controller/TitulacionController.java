@@ -1,13 +1,16 @@
 package fca.cifca.sgd.controller;
 
-import lombok.extern.slf4j.Slf4j;
 import fca.cifca.sgd.model.dto.TitulacionDTO;
 import fca.cifca.sgd.service.PdfService;
+import static fca.cifca.sgd.util.ConstantesUtil.*;
+
+import fca.cifca.sgd.util.ConstantesUtil;
+import lombok.extern.slf4j.Slf4j;
 import jakarta.validation.Valid;
+import jakarta.validation.constraints.NotNull;
 import org.springframework.http.*;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.validation.annotation.Validated;
-import jakarta.validation.constraints.NotNull;
 
 @Slf4j
 @Validated
@@ -21,6 +24,12 @@ public class TitulacionController {
         this.pdfService = pdfService;
     }
 
+    /**
+     * Generar comprobante response entity.
+     *
+     * @param dto the dto
+     * @return the response entity
+     */
     @PostMapping(
             value = "/comprobante",
             consumes = MediaType.APPLICATION_JSON_VALUE,
@@ -40,17 +49,16 @@ public class TitulacionController {
             headers.setContentType(MediaType.APPLICATION_PDF);
             headers.setContentDisposition(
                     ContentDisposition.inline()
-                            .filename(dto.getNumeroCuenta() + "-comprobante-titulacion" + ".pdf")
+                            .filename(dto.getNumeroCuenta() + ConstantesUtil.TITULACION + ConstantesUtil.PDF)
                             .build()
             );
 
             return ResponseEntity.ok().headers(headers).body(pdf);
 
         } catch (Exception e){
-            log.error("Error al generar comprobante titulacion", e);
+            log.error("Error al generar el comprobante titulacion", e);
             throw new RuntimeException("Ocurrió un error al generar el comprobante titulacion", e);
         }
-
     }
 
 }
