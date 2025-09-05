@@ -18,6 +18,24 @@ public class TitulacionControllerTest {
     private TitulacionController titulacionController;
 
     @Test
+    public void titulacionControllerTest() {
+        TitulacionDTO dto = new TitulacionDTO();
+        dto.setNumeroCuenta("213456789");
+        dto.setNombre("Juan");
+        dto.setPrimerApellido("Perez");
+        dto.setSegundoApellido("");
+        dto.setUniversidadProcedencia("Universidad Patito");
+        dto.setPlantelProcedencia("Plantel Patito");
+        dto.setLicenciatura("Administración");
+        dto.setOpcionTitulacion("Alto nivel académico");
+        dto.setModalidad("Escolarizado");
+        dto.setFechaRegistro(LocalDate.ofEpochDay(20250827));
+        dto.setFechaAplicacion(LocalDate.ofEpochDay(20260214));
+        var result = titulacionController.generarComprobante(dto);
+        assert(result != null);
+    }
+
+    @Test
     public void titulacionControllerTestNull() {
         TitulacionDTO titulacionDTO = null;
         assertThrows(ConstraintViolationException.class, () -> titulacionController.generarComprobante(titulacionDTO));

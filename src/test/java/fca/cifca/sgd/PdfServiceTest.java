@@ -36,21 +36,29 @@ public class PdfServiceTest {
 
     @Test
     public void pdfServiceTestNull() {
-        assertThrows(IllegalArgumentException.class, () -> pdfService.renderHtmlToPdf(null, null));
+        String template = null;
+        TitulacionDTO dto = null;
+        assertThrows(IllegalArgumentException.class, () -> pdfService.renderHtmlToPdf(template, dto));
     }
 
     @Test
     public void pdfServiceTestEmpty() {
-        assertThrows(IllegalArgumentException.class, () -> pdfService.renderHtmlToPdf("", ""));
+        String template = "";
+        TitulacionDTO dto = new TitulacionDTO();
+        assertThrows(IllegalArgumentException.class, () -> pdfService.renderHtmlToPdf(template, dto));
+    }
+
+    @Test
+    public void pdfServiceTestNullEmpty() {
+        String template = null;
+        TitulacionDTO dto = new TitulacionDTO();
+        assertThrows(IllegalArgumentException.class, () -> pdfService.renderHtmlToPdf(template, dto));
     }
 
     @Test
     public void pdfServiceTestEmptyNull() {
-        assertThrows(IllegalArgumentException.class, () -> pdfService.renderHtmlToPdf(null, null));
-    }
-
-    @Test
-    public void pdfServiceTestEmptyTemplate() {
-        assertThrows(IllegalArgumentException.class, () -> pdfService.renderHtmlToPdf("", ""));
+        String template = "";
+        TitulacionDTO dto = null;
+        assertThrows(IllegalArgumentException.class, () -> pdfService.renderHtmlToPdf(template, dto));
     }
 }
