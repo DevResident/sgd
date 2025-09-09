@@ -35,6 +35,8 @@ public class TitulacionDTO {
     private String modalidad;
     @NotNull
     private LocalDate fechaRegistro;
+    /*
     @NotNull
-    private LocalDate fechaAplicacion;;
+    private LocalDate fechaAplicacion;
+    */
 }
