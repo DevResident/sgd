@@ -21,6 +21,7 @@ public class GeneralTest {
     private TitulacionDTO finalTitulacionDTO() {
         TitulacionDTO dto = new TitulacionDTO();
         dto.setNumeroCuenta("213456789");
+        dto.setUrlFotografia("https://upload.wikimedia.org/wikipedia/commons/3/3d/Ana_de_Armas_by_Gage_Skidmore_2.jpg");
         dto.setNombre("Juan");
         dto.setPrimerApellido("Perez");
         dto.setSegundoApellido("");
@@ -30,7 +31,6 @@ public class GeneralTest {
         dto.setOpcionTitulacion("Alto nivel académico");
         dto.setModalidad("Escolarizado");
         dto.setFechaRegistro(LocalDate.of(2025, 8, 27));
-        dto.setFechaAplicacion(LocalDate.of(2026, 2, 14));
         return dto;
     }
 
