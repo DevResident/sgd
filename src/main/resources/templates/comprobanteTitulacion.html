@@ -33,12 +33,16 @@
     <tr>
         <th>Número de Cuenta:</th>
         <td th:text="${documento.numeroCuenta}">__</td>
+        <td class="photo" rowspan="8">
+            <img th:if="${documento.urlFotografia}"
+                 th:src="${documento.urlFotografia}"
+                 alt="Fotografía"
+                 class="photo__img"/>
+        </td>
     </tr>
     <tr>
         <th>Nombre del Alumno:</th>
-        <td colspan="3"
-            th:text="${documento.nombre + ' ' + documento.primerApellido + ' ' + documento.segundoApellido}">
-        </td>
+        <td th:text="${documento.nombre + ' ' + documento.primerApellido + ' ' + documento.segundoApellido}">__</td>
     </tr>
     <tr>
         <th>Universidad:</th>

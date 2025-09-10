@@ -19,9 +19,12 @@ public class TitulacionDTO {
     @NotBlank
     private String numeroCuenta;
     @NotBlank
+    private String urlFotografia;
+    @NotBlank
     private String nombre;
     @NotBlank
     private String primerApellido;
+    //No es obligatorio en segundo apellido
     private String segundoApellido;
     @NotBlank
     private String universidadProcedencia;
@@ -35,8 +38,4 @@ public class TitulacionDTO {
     private String modalidad;
     @NotNull
     private LocalDate fechaRegistro;
-    /*
-    @NotNull
-    private LocalDate fechaAplicacion;
-    */
 }

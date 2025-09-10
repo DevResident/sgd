@@ -1,7 +1,9 @@
 .tit-table {
-    width:100%;
-    border-collapse:collapse;
-    margin-top:6px;
+    width: 120%;
+    margin-left: -10%;
+    table-layout: fixed;
+    border-collapse: collapse;
+    margin-top: 6px;
 }
 
 .tit-table th,
@@ -12,10 +14,15 @@
     text-align:left;
 }
 
+.tit-table td:not(.photo) {
+    width: auto;
+    word-wrap: break-word;
+}
+
 .tit-table th {
     background:#f2f2f2;
     font-weight:700;
-    width:32%;
+    width:27.5%;
     white-space:nowrap;
 }
 
@@ -23,7 +30,23 @@
     background:#fafafa;
 }
 
-/* En print se suele preferir sin bandas */
+.tit-table .photo {
+    width: 42mm;
+    min-width: 42mm;
+    border: 1px solid #cfcfcf;
+    text-align: center;
+    vertical-align: top;
+    padding: 0;
+}
+
+.photo__img {
+    display: block;
+    width: 38mm;
+    height: 48mm;
+    object-fit: cover;
+    margin: 6px auto;
+}
+
 @media print {
     .tit-table tr:nth-child(even) td { background:transparent; }
 }

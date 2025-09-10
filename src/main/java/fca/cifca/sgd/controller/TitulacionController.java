@@ -2,9 +2,8 @@ package fca.cifca.sgd.controller;
 
 import fca.cifca.sgd.model.dto.TitulacionDTO;
 import fca.cifca.sgd.service.PdfService;
-import static fca.cifca.sgd.util.ConstantesUtil.*;
-
 import fca.cifca.sgd.util.ConstantesUtil;
+
 import lombok.extern.slf4j.Slf4j;
 import jakarta.validation.Valid;
 import jakarta.validation.constraints.NotNull;
